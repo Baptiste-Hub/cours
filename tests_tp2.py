@@ -36,3 +36,12 @@ def test_action_look():
 
 def test_thing_create():
     b = Thing(3)
+
+def test_volume():
+    b = Thing(3)
+    assert b.capacity() == 3
+
+def test_set_capacity():
+    b = Thing(3)
+    b.set_capacity(5)
+    assert b.capacity() == 5

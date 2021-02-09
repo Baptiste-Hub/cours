@@ -33,3 +33,8 @@ class Thing:
     def __init__(self,volume):
         self._volume = volume
     
+    def capacity(self):
+        return self._volume
+    
+    def set_capacity(self,nouveau_volume):
+        self._volume = nouveau_volume
