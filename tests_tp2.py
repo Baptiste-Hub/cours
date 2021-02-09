@@ -80,3 +80,9 @@ def test_repr():
     t = Thing(3)
     t.set_name("bidule")
     assert repr(t) == "bidule"
+
+def test_has_name():
+    t = Thing(3)
+    assert not t.has_name("bidule")
+    t.set_name("bidule")
+    assert t.has_name("bidule")

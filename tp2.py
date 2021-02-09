@@ -1,4 +1,9 @@
 class Box:
+
+    # ===============
+    # Constructeur
+    # ===============
+
     def __init__(self):
         self._contents = []
         self._ouvert = False
@@ -77,9 +82,16 @@ class Thing:
     
     def volume(self):
         return self._volume
-    
+
     def set_name(self,nom):
         self._name = nom
     
     def __repr__(self):
         return self._name
+
+    def has_name(self,nom):
+        if self._name == nom:
+            resultat = True
+        else:
+            resultat = False
+        return resultat
