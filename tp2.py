@@ -28,3 +28,8 @@ class Box:
         else:
             resultat = "La boite est fermée."
         return resultat
+
+class Thing:
+    def __init__(self,volume):
+        self._volume = volume
+    

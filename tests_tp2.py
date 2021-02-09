@@ -33,3 +33,6 @@ def test_action_look():
     assert b.action_look() == "La boite est fermée."
     b.open()
     assert b.action_look() == "La boite contient: truc1, truc2"
+
+def test_thing_create():
+    b = Thing(3)
