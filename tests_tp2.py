@@ -6,3 +6,13 @@ def test_box_add():
     b = Box()
     b.add("truc1")
     b.add("truc2")
+
+def test_contains():
+    b = Box()
+    b.add("truc1")
+    "truc2" in b
+
+def test_remove():
+    b = Box()
+    b.add("truc1")
+    b.remove("truc1")
