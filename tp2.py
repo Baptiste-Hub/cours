@@ -4,10 +4,10 @@ class Box:
     # Constructeur
     # ===============
 
-    def __init__(self):
+    def __init__(self, is_open = False, capacity = None):
         self._contents = []
-        self._ouvert = False
-        self._capacity = None
+        self._ouvert = is_open
+        self._capacity = capacity
 
     # ===============
     # Getter
@@ -85,9 +85,9 @@ class Box:
 
 
 class Thing:
-    def __init__(self,volume):
+    def __init__(self,volume,name=None):
         self._volume = volume
-        self._name = ""
+        self._name = name
     
     def volume(self):
         return self._volume
