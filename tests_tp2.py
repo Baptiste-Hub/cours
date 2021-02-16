@@ -101,6 +101,8 @@ def test_find():
     assert b.find("bidule") is None
 
 def test_list_from_yaml():
+    b = Box(True,3)
+    t = Thing(2,"bonjour")
     text = """
     -   type: Box
         is_open: True
@@ -109,5 +111,7 @@ def test_list_from_yaml():
         volume: 2
         name: "bonjour"
     """
-    list_from_yaml(text)
-    
+    dico = list_from_yaml(text)
+    assert str(dico["box"][0]) == str(b)
+    assert str(t) == str(dico["thing"][0])
+test_list_from_yaml()

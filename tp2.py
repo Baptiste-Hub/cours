@@ -8,15 +8,18 @@ import io
 def list_from_yaml(data):
     stream = io.StringIO(data)
     liste_data = yaml.load(stream)
+    resultat = dict()
+    resultat["box"] = []
+    resultat["thing"] = []
     for data in liste_data:
         if data["type"] == "Box":
-            Box.from_yaml(data)
+            resultat["box"].append(Box.from_yaml(data))
         elif data["type"] == "Thing":
-            Thing.from_yaml(data)
-            
+            resultat["thing"].append(Thing.from_yaml(data))
+    return resultat
 
 # ===============
-# Méthodes
+# Classes
 # ===============
 
 class Box:
@@ -108,10 +111,18 @@ class Box:
                 if objet.has_name(nom):
                     resultat = objet
         return resultat
+    
+    def __repr__(self):
+        return str(self._contents) +" "+ str(self._ouvert) +" "+ str(self._capacity)
 
 
 
 class Thing:
+
+    # ===============
+    # Constructeur
+    # ===============
+
     def __init__(self,volume,name=None):
         self._volume = volume
         self._name = name
@@ -121,6 +132,10 @@ class Thing:
         volume = data.get("volume", None)
         name = data.get("name", None)
         return Thing(volume, name)
+
+    # ===============
+    # Getter
+    # ===============
 
     def volume(self):
         return self._volume
