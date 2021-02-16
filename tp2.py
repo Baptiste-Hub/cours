@@ -1,3 +1,24 @@
+import yaml
+import io
+
+# ===============
+# Fonctions globales
+# ===============
+
+def list_from_yaml(data):
+    stream = io.StringIO(data)
+    liste_data = yaml.load(stream)
+    for data in liste_data:
+        if data["type"] == "Box":
+            Box.from_yaml(data)
+        elif data["type"] == "Thing":
+            Thing.from_yaml(data)
+            
+
+# ===============
+# Méthodes
+# ===============
+
 class Box:
 
     # ===============
@@ -8,6 +29,12 @@ class Box:
         self._contents = []
         self._ouvert = is_open
         self._capacity = capacity
+    
+    @staticmethod
+    def from_yaml(data):
+        is_open = data.get("is_open", False)
+        capacity = data.get("capacity", None)
+        return Box(is_open, capacity)
 
     # ===============
     # Getter
@@ -88,7 +115,13 @@ class Thing:
     def __init__(self,volume,name=None):
         self._volume = volume
         self._name = name
-    
+
+    @staticmethod
+    def from_yaml(data):
+        volume = data.get("volume", None)
+        name = data.get("name", None)
+        return Thing(volume, name)
+
     def volume(self):
         return self._volume
 
@@ -104,3 +137,5 @@ class Thing:
         else:
             resultat = False
         return resultat
+
+    

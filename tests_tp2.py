@@ -1,4 +1,5 @@
 from tp2 import *
+
 def test_box_create():
     b = Box()
 
@@ -98,3 +99,17 @@ def test_find():
     assert b.find("bidule") == t
     b.close()
     assert b.find("bidule") is None
+
+def test_list_from_yaml():
+    text = """
+    - type: Box
+    is_open: True
+    capacity: 3
+    - type: Thing
+    volume: 2
+    name: "bonjour"
+    """
+    stream = io.StringIO(text)
+    liste = yaml.load(stream)
+    list_from_yaml(liste)
+    
