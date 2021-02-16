@@ -10,7 +10,7 @@ class Box:
         self._capacity = None
 
     # ===============
-    # Get
+    # Getter
     # ===============
 
     def __contains__(self,valeur):
@@ -23,7 +23,7 @@ class Box:
         return self._ouvert
 
     # ===============
-    # Set
+    # Setter
     # ===============
 
     def add(self, truc):
@@ -47,7 +47,7 @@ class Box:
 
     def action_look(self):
         resultat = "La boite contient: "
-        if self._ouvert == True:
+        if self._ouvert is True:
             resultat += ", ".join(self._contents)
         else:
             resultat = "La boite est fermée."
@@ -73,6 +73,15 @@ class Box:
             else:
                 resultat = False
         return resultat
+
+    def find(self,nom):
+        resultat = None
+        if self._ouvert is True:
+            for objet in self._contents:
+                if objet.has_name(nom):
+                    resultat = objet
+        return resultat
+
 
 
 class Thing:
