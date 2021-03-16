@@ -115,3 +115,14 @@ def test_list_from_yaml():
     assert str(dico["box"][0]) == str(b)
     assert str(t) == str(dico["thing"][0])
 test_list_from_yaml()
+
+def test_set_key():
+    b = Box(False,3)
+    t = Thing(1,"clé")
+    t2 = Thing(5,"hachoir a viande")
+    b.set_key(t)
+    assert not b.is_open()
+    b.open_with(t2)
+    assert not b.is_open()
+    b.open_with(t)
+    assert b.is_open()
